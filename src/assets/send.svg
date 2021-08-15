@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60"
+    viewBox="14 -0 60 60">
+    <defs>
+        <style>
+            .a {
+                fill: #1dbc86;
+            }
+
+            .b {
+                fill: none;
+                stroke: #fff;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-miterlimit: 10;
+                stroke-width: 1.5px;
+            }
+
+            .c {
+                filter: url(#a);
+            }
+        </style>
+        <filter id="a" x="0" y="0" width="76" height="77" filterUnits="userSpaceOnUse">
+            <feOffset dy="3" input="SourceAlpha" />
+            <feGaussianBlur stdDeviation="6" result="b" />
+            <feFlood flood-opacity="0.051" />
+            <feComposite operator="in" in2="b" />
+            <feComposite in="SourceGraphic" />
+        </filter>
+    </defs>
+    <g transform="translate(17.892 14.976)">
+        <g class="c" transform="matrix(1, 0, 0, 1, -17.89, -14.98)">
+            <ellipse class="a" cx="20" cy="20.5" rx="20" ry="20.5" transform="translate(18 15)" />
+        </g>
+        <g transform="translate(12.289 12.289)">
+            <path class="b" d="M0,4.992,4.992,0,9.985,4.992" transform="translate(5.991 0)" />
+            <path class="b" d="M0,15.976H6.989a3.994,3.994,0,0,0,3.994-3.994V0" transform="translate(0 0)" />
+        </g>
+    </g>
+</svg>
