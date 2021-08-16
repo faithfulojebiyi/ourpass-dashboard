@@ -45,7 +45,6 @@
       </template>
     </v-navigation-drawer>
     <v-navigation-drawer
-      v-model="drawer"
       right
       app
       clipped
@@ -62,9 +61,9 @@
           <v-card-actions>
             <v-btn
               color="primary"
-              class="no-text-transform"
+              class="no-text-transform px-4"
             >
-              Chat with us
+              Chat with Us
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -81,51 +80,30 @@
     >
       <img src="../assets/ourpasslogo.svg" class="cursor-pointer" style="max-width: 80px;">
       <v-spacer></v-spacer>
-      <p class="ma-2 greetings-desktop primary--text">Hi! Faithful</p>
-      <v-menu
-        bottom
-        left
-        offset-y
-        origin="top right"
+      <v-btn
+        outlined
+        color="primary"
+        small
+        class="mr-2 no-text-transform"
       >
-        <template v-slot:activator="{ attrs, on }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-            class="mr-1"
-          >
-            <v-avatar size="30">
-              <img src="../assets/avatar.png">
-            </v-avatar>
-          </v-btn>
-        </template>
-        <v-list dense nav>
-          <v-list-item
-            v-for="item in navi"
-            :key="item.title"
-            router :to="item.route"
-            active-class="primary--text"
-          >
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-btn color="primary" block>
-            <v-icon left class="pr-4">
-              mdi-power
-            </v-icon>
-            Logout
-          </v-btn>
-        </v-list>
-      </v-menu>
+        Go to website
+      </v-btn>
+      <v-badge
+        :content=6
+        :value=6
+        overlap
+        v-if="isXs"
+      >
+        <v-icon
+          size="25"
+          color="black"
+        >
+          mdi-bell-outline
+        </v-icon>
+      </v-badge>
       <v-app-bar-nav-icon v-if="isXs" class="primary--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-container fluid class="px-6">
+    <v-container fluid class="pa-0">
       <router-view></router-view>
     </v-container>
   </v-main>
