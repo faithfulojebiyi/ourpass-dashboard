@@ -11,7 +11,7 @@
     >
       <v-list class="mt-11">
         <v-list-item
-          class="px-10 list-class"
+          class="pl-10 pr-9 list-class"
           v-for="item in items"
           :key="item.title"
           router :to="item.route"
@@ -95,7 +95,7 @@
             v-on="on"
             class="mr-1"
           >
-            <v-avatar size="40">
+            <v-avatar size="30">
               <img src="../assets/avatar.png">
             </v-avatar>
           </v-btn>
@@ -123,9 +123,9 @@
           </v-btn>
         </v-list>
       </v-menu>
-      <v-app-bar-nav-icon class="primary--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon v-if="isXs" class="primary--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-container fluid>
+    <v-container fluid class="px-6">
       <router-view></router-view>
     </v-container>
   </v-main>
@@ -135,6 +135,7 @@
 export default {
   data () {
     return {
+      isXs: false,
       drawer: null,
       items: [
         {
@@ -171,6 +172,24 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    onResize () {
+      this.isXs = window.innerWidth < 1024
+    }
+  },
+  watch: {
+    isXs (value) {
+      if (!value) {
+        if (this.drawer) {
+          this.drawer = false
+        }
+      }
+    }
+  },
+  mounted () {
+    this.onResize()
+    window.addEventListener('resize', this.onResize, { passive: true })
   }
 }
 </script>
@@ -197,6 +216,7 @@ export default {
   font-weight: 700;
 }
 .no-text-transform {
-    text-transform: none !important;
-  }
+  text-transform: none !important;
+  letter-spacing: 0.1px !important;
+}
 </style>
