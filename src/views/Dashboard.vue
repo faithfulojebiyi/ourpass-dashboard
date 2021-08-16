@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="text-h4 font-weight-bold mt-4">Hi Faithful ,</p>
-    <p class="text-body-2 p-family"> Good evening, checkout with Pass by exploring one of the stores below </p>
+    <p class="text-body-2 p-family"> Good <span>{{ getTime() }}</span>, checkout with Pass by exploring one of the stores below </p>
     <v-card class="mt-8 green-card pa-6 white--text elevation-0" color="primary" min-height="250px">
       <v-row class="ma-0">
         <v-col
@@ -89,7 +89,7 @@
       </v-col>
     </v-row>
     <div class="d-flex flex-column justify-center align-center">
-      <img src="../assets/emptypass.svg"/>
+      <v-img :max-width="$vuetify.breakpoint.xs ? 320 : 550" src="../assets/emptypass.svg"></v-img>
     </div>
     <v-snackbar
       app
@@ -98,7 +98,7 @@
       :timeout="timeout"
       transition="slide-y-reverse-transition"
       bottom
-      color="primary"
+      :color="snackbarColor"
     >
       {{ message }}
     </v-snackbar>
@@ -113,7 +113,9 @@ export default {
     return {
       balancevisible: true,
       account_number: '1010101010',
-      snackbar: false
+      snackbar: false,
+      timeout: 2000,
+      snackbarColor: 'primary'
     }
   },
   methods: {
@@ -125,8 +127,6 @@ export default {
       const input = document.createElement('input')
       document.body.appendChild(input)
       input.value = copied
-
-      // 2) Select the text
       input.select()
 
       const isSuccessful = document.execCommand('copy')
@@ -134,10 +134,25 @@ export default {
         document.body.removeChild(input)
         this.snackbar = true
         this.message = 'Account number copied to clipboard'
-        this.showlogin = true
+        this.snackbarColor = 'primary'
       }
       if (!isSuccessful) {
-        console.error('Failed to copy text.')
+        document.body.removeChild(input)
+        this.snackbar = true
+        this.message = 'Failed to copy account number to clipboard'
+        this.snackbarColor = 'error'
+      }
+    },
+    getTime () {
+      const today = new Date()
+      const curHour = today.getHours()
+
+      if (curHour < 12) {
+        return 'morning'
+      } else if (curHour < 18) {
+        return 'afternoon'
+      } else {
+        return 'evening'
       }
     }
   }
