@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="px-2 px-sm-4 pt-6">
     <p class="text-h4 font-weight-bold mt-4">Hi Faithful ,</p>
     <p class="text-body-2 p-family"> Good <span>{{ getTime() }}</span>, checkout with Pass by exploring one of the stores below </p>
     <v-card class="mt-8 green-card pa-6 white--text elevation-0" color="primary" min-height="250px">

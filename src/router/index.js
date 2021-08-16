@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import DashboardLayout from '../components/DashboardLayout.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
+import Cards from '../views/Cards.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
         path: '/',
         name: 'Dashboard',
         component: Dashboard
+      },
+      {
+        path: '/cards',
+        name: 'Cards',
+        component: Cards
       },
       {
         path: '/home',
