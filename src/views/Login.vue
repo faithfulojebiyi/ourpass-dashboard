@@ -133,6 +133,7 @@ export default {
   }
   .no-text-transform {
     text-transform: none !important;
+    letter-spacing: 0.1px !important;
   }
   @media only screen and (max-width: 600px) {
     .login-card {
