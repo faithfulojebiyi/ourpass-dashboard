@@ -48,7 +48,7 @@
       right
       app
       clipped
-      mobile-breakpoint="1025"
+      mobile-breakpoint="1024"
       class="elevation-0 border-none"
       floating
       width="250"
