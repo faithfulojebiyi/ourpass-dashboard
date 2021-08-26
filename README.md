@@ -1,4 +1,6 @@
 # ourpass-dashboard
+A clone of the [Ourpass.co user Dashboard](https://dashboard.ourpass.co)
+You can register on https://dashboard.ourpass.co to compare them
 
 ## Project setup
 ```
